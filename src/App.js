@@ -17,9 +17,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}`
-      )
+      .get(`https://api.giphy.com/v1/gifs/trending?api_key=${api_key}`)
       .then((response) => {
         response.data.data.map((i) => trending.push(i));
         setLoaded(trending);
@@ -33,9 +31,7 @@ function App() {
     let input = document.getElementById("search").value;
 
     axios
-      .get(
-        `http://api.giphy.com/v1/gifs/search?q=${input}&api_key=${api_key}`
-      )
+      .get(`http://api.giphy.com/v1/gifs/search?q=${input}&api_key=${api_key}`)
       .then((response) => {
         response.data.data.map((i) => api_data.push(i));
         setFound(true);
@@ -67,20 +63,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>GIF Search</h2>
+      <input type="text" id="search" placeholder="Search GIFS" />
+      <button id="search-btn" onClick={fetchApi}>
+        Search
+      </button>
+      <div className="container"> {display ? trendingImages : images}</div>
     </div>
   );
 }
