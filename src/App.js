@@ -31,7 +31,7 @@ function App() {
     let input = document.getElementById("search").value;
 
     axios
-      .get(`http://api.giphy.com/v1/gifs/search?q=${input}&api_key=${api_key}`)
+      .get(`https://api.giphy.com/v1/gifs/search?q=${input}&api_key=${api_key}`)
       .then((response) => {
         response.data.data.map((i) => api_data.push(i));
         setFound(true);
